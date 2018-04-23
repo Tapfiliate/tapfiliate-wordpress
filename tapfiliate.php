@@ -48,42 +48,45 @@ function options_page_tapfiliate()
 
 function render_wordpress_code()
 {
-  global $post;
-  $post_name = $post ? $post->post_name : null;
-  $thank_you_page = get_option('thank_you_page');
-  $tap_account_id = get_option('tap_account_id');
-  $query_parameter_external_id = get_option('query_parameter_external_id');
-  $query_parameter_conversion_amount = get_option('query_parameter_conversion_amount');
+    global $post;
+    $post_name = $post ? $post->post_name : null;
+    $thank_you_page = get_option('thank_you_page');
+    $query_parameter_external_id = get_option('query_parameter_external_id');
+    $query_parameter_conversion_amount = get_option('query_parameter_conversion_amount');
 
-  $is_converting = false;
-  if ($post_name === $thank_you_page) {
-      $has_external_id_parameter_configured = !empty($query_parameter_external_id);
-      $external_id = isset($_GET[$query_parameter_external_id]) ? $_GET[$query_parameter_external_id] : null;
-      $amount = isset($_GET[$query_parameter_conversion_amount]) ? $_GET[$query_parameter_conversion_amount] : null;
+    $is_converting = false;
+    $external_id_arg = null;
+    $amount_arg = null;
+    $options_arg = null;
+    if ($post_name === $thank_you_page) {
+        $has_external_id_parameter_configured = !empty($query_parameter_external_id);
+        $external_id = isset($_GET[$query_parameter_external_id]) ? $_GET[$query_parameter_external_id] : null;
+        $amount = isset($_GET[$query_parameter_conversion_amount]) ? $_GET[$query_parameter_conversion_amount] : null;
 
-      if ($external_id || !$has_external_id_parameter_configured) {
-          $is_converting = true;
-          $options = [];
-          if ($program_group = get_option('program_group')) {
-              $options = [
-                  "program_group" => $program_group,
-              ];
-          }
+        if ($external_id || !$has_external_id_parameter_configured) {
+            $is_converting = true;
+            $options = [];
+            if ($program_group = get_option('program_group')) {
+                $options = [
+                    "program_group" => $program_group,
+                ];
+            }
 
-          $external_id_arg = $external_id !== null ? "'$external_id'" : "null";
-          $amount_arg = $amount !== null ? $amount : 'null';
-          $options_arg = json_encode($options, JSON_FORCE_OBJECT);
-      }
-  }
+            $external_id_arg = $external_id !== null ? "'$external_id'" : "null";
+            $amount_arg = $amount !== null ? $amount : 'null';
+            $options_arg = json_encode($options, JSON_FORCE_OBJECT);
+        }
+    }
 
-  include(WP_PLUGIN_DIR.'/tapfiliate/"tracking-snippet.php');
+    output_tap_inline_code($is_converting, $external_id_arg, $amount_arg, $options_arg);
 }
 
 function render_woocommerce_code()
 {
-    $tap_account_id = get_option('tap_account_id');
-
     $is_converting = false;
+    $external_id_arg = null;
+    $amount_arg = null;
+    $options_arg = null;
     if (function_exists("is_order_received_page") && is_order_received_page() && isset($GLOBALS['order-received'])) {
         $is_converting = true;
 
@@ -123,7 +126,7 @@ function render_woocommerce_code()
         $options_arg = json_encode($options, JSON_FORCE_OBJECT);
     }
 
-    include(WP_PLUGIN_DIR.'/tapfiliate/tracking-snippet.php');
+    output_tap_inline_code($is_converting, $external_id_arg, $amount_arg, $options_arg);
 }
 
 function render_wpeasycart_conversion_code($ec_order_id, $ec_order)
@@ -138,13 +141,26 @@ function render_wpeasycart_conversion_code($ec_order_id, $ec_order)
     $amount_arg = $ec_order->sub_total;
     $options_arg = json_encode($options, JSON_FORCE_OBJECT);
 
-    include(WP_PLUGIN_DIR.'/tapfiliate/tracking-snippet.php');
+    output_tap_inline_code(true, $external_id_arg, $amount_arg, $options_arg);
+}
+
+function output_tap_inline_code($is_converting, $external_id_arg = null, $amount_arg = null, $options_arg = null)
+{
+    $tap_account_id = get_option('tap_account_id');
+
+    ob_start();
+    include(WP_PLUGIN_DIR . '/tapfiliate/tracking-snippet.php');
+    $script = ob_get_contents();
+    ob_end_clean();
+
+    wp_add_inline_script("tapfiliate-js", $script);
 }
 
 function tapfiliate()
 {
-  $integrate_for = get_option('integrate_for');
+  wp_enqueue_script("tapfiliate-js", "https://script.tapfiliate.com/tapfiliate.js");
 
+  $integrate_for = get_option('integrate_for');
   switch ($integrate_for) {
     case 'wp':
       render_wordpress_code();
@@ -155,8 +171,7 @@ function tapfiliate()
       break;
 
     case 'ec':
-      $tap_account_id = get_option('tap_account_id');
-      include(WP_PLUGIN_DIR.'/tapfiliate/tracking-snippet.php');
+      output_tap_inline_code(false);
       break;
   }
 }
@@ -171,7 +186,7 @@ if (is_admin()) {
 
 if (!is_admin()) {
   add_action('wpeasycart_success_page_content_top', 'render_wpeasycart_conversion_code', 10, 2);
-  add_action('wp_head', 'tapfiliate');
+  add_action('wp_enqueue_scripts', 'tapfiliate');
 }
 
 ?>
