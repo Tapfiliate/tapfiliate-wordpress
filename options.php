@@ -82,18 +82,17 @@
 </form>
 </div>
 
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script>
-$(function() {
-	$('[name=integrate_for]').on('change', function(){
-		var ifor = $('[name=integrate_for]:checked').val();
+jQuery(function() {
+	jQuery('[name=integrate_for]').on('change', function(){
+		var ifor = jQuery('[name=integrate_for]:checked').val();
 		if (ifor == 'wp') {
-			$('#integrate_for_wordpress_settings').show();
+			jQuery('#integrate_for_wordpress_settings').show();
 		} else {
-			$('#integrate_for_wordpress_settings').hide();
+			jQuery('#integrate_for_wordpress_settings').hide();
 		}
 	});
 
-	$('[name=integrate_for]').change();
+	jQuery('[name=integrate_for]').change();
 });
 </script>
