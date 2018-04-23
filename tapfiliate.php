@@ -1,7 +1,6 @@
 <?php
 /*
 Plugin Name: Tapfiliate
-Plugin URI: https://tapfiliate.com/
 Description: Easily integrate the Tapfiliate tracking code.
 Version: 2.0
 Author: Tapfiliate
