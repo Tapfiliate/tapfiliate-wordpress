@@ -43,7 +43,7 @@ function admin_menu_tapfiliate()
 
 function options_page_tapfiliate()
 {
-  include(WP_PLUGIN_DIR.'/tapfiliate/options.php');
+  include(dirname(__FILE__) . '/options.php');
 }
 
 function render_wordpress_code()
@@ -149,7 +149,7 @@ function output_tap_inline_code($is_converting, $external_id_arg = null, $amount
     $tap_account_id = get_option('tap_account_id');
 
     ob_start();
-    include(WP_PLUGIN_DIR . '/tapfiliate/tracking-snippet.php');
+    include(dirname(__FILE__) . '/tracking-snippet.php');
     $script = ob_get_contents();
     ob_end_clean();
 
