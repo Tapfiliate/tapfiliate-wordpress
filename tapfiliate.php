@@ -46,7 +46,7 @@ function options_page_tapfiliate()
   include(dirname(__FILE__) . '/options.php');
 }
 
-function render_wordpress_code()
+function tapfiliate_render_wordpress_code()
 {
     global $post;
     $post_name = $post ? $post->post_name : null;
@@ -78,10 +78,10 @@ function render_wordpress_code()
         }
     }
 
-    output_tap_inline_code($is_converting, $external_id_arg, $amount_arg, $options_arg);
+    tapfiliate_output_inline_code($is_converting, $external_id_arg, $amount_arg, $options_arg);
 }
 
-function render_woocommerce_code()
+function tapfiliate_render_woocommerce_code()
 {
     $is_converting = false;
     $external_id_arg = null;
@@ -126,10 +126,10 @@ function render_woocommerce_code()
         $options_arg = json_encode($options, JSON_FORCE_OBJECT);
     }
 
-    output_tap_inline_code($is_converting, $external_id_arg, $amount_arg, $options_arg);
+    tapfiliate_output_inline_code($is_converting, $external_id_arg, $amount_arg, $options_arg);
 }
 
-function render_wpeasycart_conversion_code($ec_order_id, $ec_order)
+function tapfiliate_render_wpeasycart_conversion_code($ec_order_id, $ec_order)
 {
     $is_converting = true;
 
@@ -141,10 +141,10 @@ function render_wpeasycart_conversion_code($ec_order_id, $ec_order)
     $amount_arg = $ec_order->sub_total;
     $options_arg = json_encode($options, JSON_FORCE_OBJECT);
 
-    output_tap_inline_code(true, $external_id_arg, $amount_arg, $options_arg);
+    tapfiliate_output_inline_code(true, $external_id_arg, $amount_arg, $options_arg);
 }
 
-function output_tap_inline_code($is_converting, $external_id_arg = null, $amount_arg = null, $options_arg = null)
+function tapfiliate_output_inline_code($is_converting, $external_id_arg = null, $amount_arg = null, $options_arg = null)
 {
     $tap_account_id = get_option('tap_account_id');
 
@@ -163,15 +163,15 @@ function tapfiliate()
   $integrate_for = get_option('integrate_for');
   switch ($integrate_for) {
     case 'wp':
-      render_wordpress_code();
+      tapfiliate_render_wordpress_code();
       break;
 
     case 'wc':
-      render_woocommerce_code();
+      tapfiliate_render_woocommerce_code();
       break;
 
     case 'ec':
-      output_tap_inline_code(false);
+      tapfiliate_output_inline_code(false);
       break;
   }
 }
