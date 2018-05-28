@@ -3,7 +3,7 @@ Contributors: Tapfiliate
 Tags: javascript, Tapfiliate, affiliate, marketing
 Requires at least: 2.7
 Tested up to: 4.9.5
-Stable tag: 2.1
+Stable tag: 2.1.2
 License: MIT License
 Requires PHP: 5.3
 
@@ -26,5 +26,5 @@ Easily integrate the Tapfiliate tracking code on all your wordpress pages using 
 
 == Changelog ==
 
-= 2.1.1 =
+= 2.1.2 =
 * First version on the wordpress plugin directory
