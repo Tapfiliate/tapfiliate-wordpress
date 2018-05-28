@@ -7,11 +7,11 @@ Stable tag: 2.1
 License: MIT License
 Requires PHP: 5.3
 
-Easily integrate the Tapfiliate tracking code
+Create, track and grow your affiliate program. Tapfiliate helps businesses and influencers grow together, through affiliate marketing. [Learn more about our features here](https://tapfiliate.com/).
 
 == Description ==
 
-This plugin adds the Tapfiliate tracking code to all pages
+Easily integrate the Tapfiliate tracking code on all your wordpress pages using this plugin.
 
 == Installation ==
 
@@ -26,5 +26,5 @@ This plugin adds the Tapfiliate tracking code to all pages
 
 == Changelog ==
 
-= 2.1 =
+= 2.1.1 =
 * First version on the wordpress plugin directory
