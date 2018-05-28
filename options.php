@@ -17,16 +17,16 @@
 <tr valign="top">
 <th style="width: auto;" scope="row">Integrate for:</th>
 <td>
-	<div style="float: left; margin-right:20px":>
-		<input type="radio" id="integrate_for_wp" value="wp"  name="integrate_for" <?php echo (get_option('integrate_for') == 'wp') ? 'checked' : null;  ?>/>
+	<div style="float: left; margin-right:20px">
+		<input type="radio" id="integrate_for_wp" value="wp"  name="integrate_for" <?php echo (get_option('integrate_for') == 'wp') ? 'checked' : null; ?>/>
 		<label for="integrate_for_wp">Wordpress</label>
 	</div>
-	<div style="float: left; margin-right:20px":>
-		<input type="radio" id="integrate_for_wc" value="wc" name="integrate_for"  <?php echo (get_option('integrate_for') == 'wc') ? 'checked' : null;  ?>/>
+	<div style="float: left; margin-right:20px">
+		<input type="radio" id="integrate_for_wc" value="wc" name="integrate_for"  <?php echo (get_option('integrate_for') == 'wc') ? 'checked' : null; ?>/>
 		<label for="integrate_for_wc">WooCommerce</label>
 	</div>
-	<div style="float: left; margin-right:20px":>
-		<input type="radio" id="integrate_for_ec" value="ec" name="integrate_for"  <?php echo (get_option('integrate_for') == 'ec') ? 'checked' : null;  ?>/>
+	<div style="float: left; margin-right:20px">
+		<input type="radio" id="integrate_for_ec" value="ec" name="integrate_for"  <?php echo (get_option('integrate_for') == 'ec') ? 'checked' : null; ?>/>
 		<label for="integrate_for_wc">WP Easy Cart</label>
 	</div>
 </td>
