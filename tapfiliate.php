@@ -2,7 +2,7 @@
 /*
 Plugin Name: Tapfiliate
 Description: Easily integrate the Tapfiliate tracking code.
-Version: 2.1
+Version: 2.2
 Author: Tapfiliate
 Author URI: https://tapfiliate.com/
 */
