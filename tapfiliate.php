@@ -118,12 +118,16 @@ function tapfiliate_render_woocommerce_code()
         }
 
         if ($program_group = get_option('program_group')) {
-          $options['program_group'] = $program_group;
+            $options['program_group'] = $program_group;
+        }
+
+        if ($coupons = $order->get_used_coupons()) {
+            $options['coupons'] = array_values($coupons);
         }
 
         $external_id_arg = $isWoo3 ? $order->get_id() : $order->id;
         $amount_arg = $order->get_subtotal() - $order->get_total_discount();
-        $options_arg = json_encode($options, JSON_FORCE_OBJECT);
+        $options_arg = json_encode($options);
     }
 
     tapfiliate_output_inline_code($is_converting, $external_id_arg, $amount_arg, $options_arg);
