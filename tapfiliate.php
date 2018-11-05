@@ -127,6 +127,7 @@ function tapfiliate_render_woocommerce_code()
 
         $external_id_arg = $isWoo3 ? $order->get_id() : $order->id;
         $amount_arg = $order->get_subtotal() - $order->get_total_discount();
+        $options = apply_filters('tapfiliate_render_wc_options', $options);
         $options_arg = json_encode($options);
     }
 
@@ -154,7 +155,7 @@ function tapfiliate_output_inline_code($is_converting, $external_id_arg = null, 
 
     ob_start();
     include(dirname(__FILE__) . '/tracking-snippet.php');
-    $script = ob_get_contents();
+    $script = apply_filters('tapfiliate_snippet', ob_get_contents());
     ob_end_clean();
 
     wp_add_inline_script("tapfiliate-js", $script);
@@ -192,5 +193,3 @@ if (!is_admin()) {
   add_action('wpeasycart_success_page_content_top', 'render_wpeasycart_conversion_code', 10, 2);
   add_action('wp_enqueue_scripts', 'tapfiliate');
 }
-
-?>
