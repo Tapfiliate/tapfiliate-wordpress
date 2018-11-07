@@ -18,12 +18,13 @@ if (!defined('WP_PLUGIN_DIR'))
 
 function activate_tapfiliate()
 {
-  add_option('tap_account_id', '1-123abc');
+  if (empty(get_option('tap_account_id'))) add_option('tap_account_id', '1-123abc');
+  do_action('tapfiliate_plugin_activated');
 }
 
 function deactive_tapfiliate()
 {
-  delete_option('tap_account_id');
+  do_action('tapfiliate_plugin_deactivated');
 }
 
 function admin_init_tapfiliate()
