@@ -147,12 +147,17 @@ function tapfiliate_render_wpeasycart_conversion_code($ec_order_id, $ec_order)
     $amount_arg = $ec_order->sub_total;
     $options_arg = json_encode($options, JSON_FORCE_OBJECT);
 
-    tapfiliate_output_inline_code(true, $external_id_arg, $amount_arg, $options_arg);
+    tapfiliate_output_inline_code($is_converting, $external_id_arg, $amount_arg, $options_arg);
 }
 
 function tapfiliate_output_inline_code($is_converting, $external_id_arg = null, $amount_arg = null, $options_arg = null)
 {
     $tap_account_id = get_option('tap_account_id');
+
+    $external_id_arg = apply_filters('tapfiliate_snippet_external_id_arg', $external_id_arg);
+    $amount_arg = apply_filters('tapfiliate_snippet_amount_arg', $amount_arg);
+    $options_arg = apply_filters('tapfiliate_snippet_options_arg', $options_arg);
+    $is_converting = apply_filters('tapfiliate_snippet_is_converting', $is_converting);
 
     ob_start();
     include(dirname(__FILE__) . '/tracking-snippet.php');
