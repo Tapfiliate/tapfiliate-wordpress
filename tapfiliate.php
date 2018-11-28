@@ -158,10 +158,10 @@ function tapfiliate_output_inline_code($is_converting, $external_id_arg = null, 
     $amount_arg = apply_filters('tapfiliate_snippet_amount_arg', $amount_arg);
     $options_arg = apply_filters('tapfiliate_snippet_options_arg', $options_arg);
     $is_converting = apply_filters('tapfiliate_snippet_is_converting', $is_converting);
+    $script = apply_filters('tapfiliate_snippet', ob_get_contents());
 
     ob_start();
     include(dirname(__FILE__) . '/tracking-snippet.php');
-    $script = apply_filters('tapfiliate_snippet', ob_get_contents());
     ob_end_clean();
 
     wp_add_inline_script("tapfiliate-js", $script);
