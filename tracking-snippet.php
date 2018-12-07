@@ -7,4 +7,3 @@ tap('detect');
 if ($is_converting) {
     echo "tap('conversion', {$external_id_arg}, {$amount_arg}, {$options_arg});";
 }
-?>
