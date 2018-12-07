@@ -3,7 +3,7 @@ Contributors: Tapfiliate
 Tags: javascript, Tapfiliate, affiliate, marketing
 Requires at least: 2.7
 Tested up to: 4.9.5
-Stable tag: 2.2
+Stable tag: 2.3
 License: MIT License
 Requires PHP: 5.3
 
@@ -31,3 +31,6 @@ Easily integrate the Tapfiliate tracking code on all your wordpress pages using 
 
 = 2.2 =
 * Implement Tapfilate coupons functionality: Track conversions by coupon.
+
+= 2.3 =
+* Added filters to allow manipulation of the tracking snippet and its arguments
