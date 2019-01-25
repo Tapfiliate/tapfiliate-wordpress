@@ -2,7 +2,7 @@
 /*
 Plugin Name: Tapfiliate
 Description: Easily integrate the Tapfiliate tracking code.
-Version: 2.3
+Version: 2.4
 Author: Tapfiliate
 Author URI: https://tapfiliate.com/
 */
@@ -193,6 +193,7 @@ if (is_admin()) {
 }
 
 if (!is_admin()) {
-  add_action('wpeasycart_success_page_content_top', 'render_wpeasycart_conversion_code', 10, 2);
+  add_action('wpeasycart_success_page_content_top', 'tapfiliate_render_wpeasycart_conversion_code', 10, 2);
   add_action('wp_enqueue_scripts', 'tapfiliate');
 }
+
