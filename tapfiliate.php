@@ -77,7 +77,7 @@ function tapfiliate_render_wordpress_code()
         }
     }
 
-    tapfiliate_output_inline_code($is_converting, $external_id_arg, $amount_arg, $options);
+    tapfiliate_output_inline_code($is_converting, $external_id_arg, $amount_arg, $options, "wordpress");
 }
 
 function tapfiliate_render_woocommerce_code()
@@ -122,11 +122,15 @@ function tapfiliate_render_woocommerce_code()
             $options['coupons'] = array_values($coupons);
         }
 
+        if ($customerId = $order->get_customer_id()) {
+            $options['customer_id'] = $customerId;
+        }
+
         $external_id_arg = $isWoo3 ? $order->get_id() : $order->id;
         $amount_arg = $order->get_subtotal() - $order->get_total_discount();
     }
 
-    tapfiliate_output_inline_code($is_converting, $external_id_arg, $amount_arg, $options);
+    tapfiliate_output_inline_code($is_converting, $external_id_arg, $amount_arg, $options, "woocommerce");
 }
 
 function tapfiliate_render_wpeasycart_conversion_code($ec_order_id, $ec_order)
@@ -141,10 +145,10 @@ function tapfiliate_render_wpeasycart_conversion_code($ec_order_id, $ec_order)
     $external_id_arg = $ec_order_id;
     $amount_arg = $ec_order->sub_total;
 
-    tapfiliate_output_inline_code($is_converting, $external_id_arg, $amount_arg, $options);
+    tapfiliate_output_inline_code($is_converting, $external_id_arg, $amount_arg, $options, "wp-easy-cart");
 }
 
-function tapfiliate_output_inline_code($is_converting, $external_id_arg = null, $amount_arg = null, $options = [])
+function tapfiliate_output_inline_code($is_converting, $external_id_arg = null, $amount_arg = null, $options = [], $integration = "wordpress")
 {
     $tap_account_id = get_option('tap_account_id');
     $external_id_arg = apply_filters('tapfiliate_snippet_external_id', $external_id_arg);
@@ -178,7 +182,7 @@ function tapfiliate()
       break;
 
     case 'ec':
-      tapfiliate_output_inline_code(false);
+      tapfiliate_output_inline_code(false, null, null, [], "wp-easy-cart");
       break;
   }
 }

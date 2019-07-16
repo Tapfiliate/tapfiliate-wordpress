@@ -1,6 +1,6 @@
 (function(t,a,p){t.TapfiliateObject=a;t[a]=t[a]||function(){ (t[a].q=t[a].q||[]).push(arguments)}})(window,'tap');
 
-tap('create', '<?php echo $tap_account_id ?>');
+tap('create', '<?php echo $tap_account_id ?>', {integration: '<?php echo $integration ?>'});
 tap('detect');
 
 <?php
