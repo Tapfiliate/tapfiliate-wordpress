@@ -5,7 +5,7 @@ if (!defined('ABSPATH')) {
 }
 
 $woo_active = tapfiliate_is_woocommerce_activated();
-$woo_connection_status = tapfiliate_get_woocommerce_connection_status();
+$woo_connection_status = $woo_active ? tapfiliate_get_woocommerce_connection_status() : "none";
 $woo_connected = $woo_connection_status === "full";
 $woo_should_reconnect = $woo_connection_status === "partial";
 

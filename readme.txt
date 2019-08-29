@@ -3,7 +3,7 @@ Contributors: Tapfiliate
 Tags: javascript, Tapfiliate, affiliate, marketing
 Requires at least: 4.4
 Tested up to: 5.2.2
-Stable tag: 3.0.0
+Stable tag: 3.0.1
 License: MIT License
 Requires PHP: 5.6
 
@@ -95,6 +95,9 @@ For manual installations, follow the following steps:
 * WooCommerce: Added WooCommerce Subscriptions support
 * WooCommerce: Added support to connect WooCommerce to Tapfiliate for automatic handling of order payment confirmation, (partial) refunds, subscription updates, and lifetime commissions
 * WordPress: Added shortcodes for adding the Tapfiliate code to specific pages
+
+= 3.0.1 =
+* Fix bug where existence of WooCommerce was not properly checked before using WooCommerce specific functionality
 
 == Upgrade Notice ==
 
