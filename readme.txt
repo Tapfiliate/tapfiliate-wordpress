@@ -3,7 +3,7 @@ Contributors: Tapfiliate
 Tags: javascript, Tapfiliate, affiliate, marketing
 Requires at least: 4.4
 Tested up to: 5.2.2
-Stable tag: 3.0.2
+Stable tag: 3.0.3
 License: MIT License
 Requires PHP: 5.6
 
@@ -101,6 +101,9 @@ For manual installations, follow the following steps:
 
 = 3.0.2 =
 * Remove unnecessary admin notice
+
+= 3.0.3 =
+* Improved placement of version check
 
 == Upgrade Notice ==
 
