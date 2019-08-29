@@ -89,16 +89,3 @@ function tapfiliate_save_category_commission_type($term_id)
 
 add_action('edited_product_cat', 'tapfiliate_save_category_commission_type', 10, 1);
 add_action('create_product_cat', 'tapfiliate_save_category_commission_type', 10, 1);
-
-function tapfiliate_admin_notice_woo_disabled()
-{
-    echo '<div class="error"><p><strong>' . sprintf(esc_html__('Tapfiliate requires WooCommerce to be installed and active if you are using Tapfiliate with WooCommerce. You can download %s here.', 'tapfiliate'), '<a href="https://woocommerce.com/" target="_blank">WooCommerce</a>') . '</strong></p></div>';
-}
-
-function tapfiliate_woocommerce_check() {
-    if (!tapfiliate_is_woocommerce_activated() && get_option('tap_wc_enabled')) {
-        add_action('admin_notices', 'tapfiliate_admin_notice_woo_disabled');
-    }
-}
-
-add_action('plugins_loaded', 'tapfiliate_woocommerce_check');
