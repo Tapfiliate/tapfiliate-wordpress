@@ -70,6 +70,8 @@ function admin_menu_tapfiliate()
 
 function options_page_tapfiliate()
 {
+    tapfiliate_version_check();
+
     include(TAPFILIATE_PLUGIN_PATH . 'options.php');
 }
 
@@ -134,8 +136,6 @@ function tapfiliate_version_check()
         update_option('tap_plugin_version', TAPFILIATE_PLUGIN_VERSION);
     }
 }
-
-add_action('plugins_loaded', 'tapfiliate_version_check');
 
 register_activation_hook(__FILE__, 'activate_tapfiliate');
 register_deactivation_hook(__FILE__, 'deactive_tapfiliate');
