@@ -39,7 +39,7 @@ if (isset($_GET['woo_connected']) && !$_GET['woo_connected'] && !$woo_connected)
             <td>
                 <input type="checkbox" id="tap_wc_enabled"
                 <?php echo $woo_active ? '' : 'disabled="disabled" title="WooCommerce is not active or installed"' ?>
-                name="tap_wc_enabled" <?php echo get_option('tap_wc_enabled', $woo_active) ? 'checked' : null; ?>
+                name="tap_wc_enabled" <?php echo get_option('tap_wc_enabled') ? 'checked' : null; ?>
                 />
                 <label for="tap_wc_enabled">WooCommerce</label>
                 <p class="description">Enable tracking of WooCommerce orders. This will also enable other WooCommerce features for Tapfiliate, like per product / category commission rates and coupon code tracking.</p>
@@ -54,7 +54,7 @@ if (isset($_GET['woo_connected']) && !$_GET['woo_connected'] && !$woo_connected)
             </td>
         </tr>
 
-        <tbody id="integrate_for_woocommerce_settings" <?php echo get_option('tap_wc_enabled', $woo_active) ? '' : 'style="display: none"'?>>
+        <tbody id="integrate_for_woocommerce_settings" <?php echo get_option('tap_wc_enabled') ? '' : 'style="display: none"'?>>
             <tr valign="top">
             <th class="titledesc" scope="row">Connect with Tapfiliate</th>
             <td>

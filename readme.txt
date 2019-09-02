@@ -3,7 +3,7 @@ Contributors: Tapfiliate
 Tags: javascript, Tapfiliate, affiliate, marketing
 Requires at least: 4.4
 Tested up to: 5.2.2
-Stable tag: 3.0.3
+Stable tag: 3.0.4
 License: MIT License
 Requires PHP: 5.6
 
@@ -104,6 +104,9 @@ For manual installations, follow the following steps:
 
 = 3.0.3 =
 * Improved placement of version check
+
+= 3.0.4 =
+* Prevent false positives for "WooCommerce enabled" on options page
 
 == Upgrade Notice ==
 
