@@ -5,7 +5,7 @@
  * Description: Easily integrate the Tapfiliate tracking code.
  * Author: Tapfiliate
  * Author URI: https://tapfiliate.com/
- * Version: 3.0.4
+ * Version: 3.0.5
  * Requires at least: 4.4
  * Tested up to: 5.2.2
  * WC requires at least: 2.6
