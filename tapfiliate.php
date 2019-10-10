@@ -46,6 +46,8 @@ function activate_tapfiliate()
         add_option('tap_account_id', '1-123abc');
     }
 
+    tapfiliate_version_check();
+
     do_action('tapfiliate_plugin_activated');
 }
 
@@ -122,6 +124,18 @@ function tapfiliate_migrate_2_x_to_3_0()
         delete_option('thank_you_page');
         delete_option('query_parameter_external_id');
         delete_option('query_parameter_conversion_amount');
+    }
+
+    $integrate_for = get_option('integrate_for');
+
+    switch ($integrate_for) {
+        case 'wc':
+          update_option('tap_wc_enabled', true);
+          break;
+
+        case 'ec':
+          update_option('tap_ec_enabled', true);
+          break;
     }
 }
 
