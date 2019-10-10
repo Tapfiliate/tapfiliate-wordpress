@@ -163,3 +163,12 @@ if (!is_admin()) {
     add_action('wpeasycart_success_page_content_top', 'tapfiliate_render_wpeasycart_conversion_code', 10, 2);
     add_action('wp_enqueue_scripts', 'tapfiliate');
 }
+
+// Add settings link to plugin page
+add_filter('plugin_action_links_'.plugin_basename(__FILE__), function($links) {
+    $url = admin_url('options-general.php?page=tapfiliate');
+    $linkText = __('Settings');
+    $links[] = "<a href=\"{$url}\">{$linkText}</a>";
+
+    return $links;
+});
