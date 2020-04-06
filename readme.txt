@@ -2,7 +2,7 @@
 Contributors: Tapfiliate
 Tags: javascript, Tapfiliate, affiliate, marketing
 Requires at least: 4.4
-Tested up to: 5.2.2
+Tested up to: 5.4
 Stable tag: 3.0.6
 License: MIT License
 Requires PHP: 5.6

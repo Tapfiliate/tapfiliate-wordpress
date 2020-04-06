@@ -7,9 +7,9 @@
  * Author URI: https://tapfiliate.com/
  * Version: 3.0.6
  * Requires at least: 4.4
- * Tested up to: 5.2.2
+ * Tested up to: 5.4
  * WC requires at least: 2.6
- * WC tested up to: 3.7.0
+ * WC tested up to: 4.01
  * Text Domain: tapfiliate
  * License: MIT License
  * License URI: https://opensource.org/licenses/MIT
