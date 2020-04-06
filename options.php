@@ -30,7 +30,7 @@ if (isset($_GET['woo_connected']) && !$_GET['woo_connected'] && !$woo_connected)
         <tr valign="top">
         <th class="titledesc" scope="row"><label for="tap_account_id">Tapfiliate account id</label></th>
         <td><input type="text" name="tap_account_id" id="tap_account_id" value="<?php echo get_option('tap_account_id'); ?>" />
-            <p class="description">Your Tapfiliate account id can be found on your <a href="https://tapfiliate.com/user/edit/" target="_blank">profile page</a></p>
+            <p class="description">Your Tapfiliate account id can be found on your <a href="https://app.tapfiliate.com/user/edit/" target="_blank">profile page</a></p>
         </td>
         </tr>
 
@@ -65,9 +65,9 @@ if (isset($_GET['woo_connected']) && !$_GET['woo_connected'] && !$woo_connected)
                     } else {
                          if ($woo_connected) {
                         ?>
-                            <a class="button-secondary button-link-delete" href="https://tapfiliate.com/a/integrations/woocommerce/disconnect/?site=<?php echo get_site_url() ?>">Disconnect</a>
+                            <a class="button-secondary button-link-delete" href="https://app.tapfiliate.com/a/integrations/woocommerce/disconnect/?site=<?php echo get_site_url() ?>">Disconnect</a>
                         <?php } else { ?>
-                            <a class="button-primary" href="https://tapfiliate.com/a/integrations/woocommerce/connect/?site=<?php echo get_site_url() ?>&r=<?php echo $woo_should_reconnect ?>"><?php echo $woo_should_reconnect ? "Reconnect" : "Connect" ?></a>
+                            <a class="button-primary" href="https://app.tapfiliate.com/a/integrations/woocommerce/connect/?site=<?php echo get_site_url() ?>&r=<?php echo $woo_should_reconnect ?>"><?php echo $woo_should_reconnect ? "Reconnect" : "Connect" ?></a>
                         <?php
                         }
                         ?>

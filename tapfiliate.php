@@ -5,7 +5,7 @@
  * Description: Easily integrate the Tapfiliate tracking code.
  * Author: Tapfiliate
  * Author URI: https://tapfiliate.com/
- * Version: 3.0.5
+ * Version: 3.0.6
  * Requires at least: 4.4
  * Tested up to: 5.2.2
  * WC requires at least: 2.6
@@ -29,7 +29,7 @@ if (!defined('WP_PLUGIN_URL'))
 if (!defined('WP_PLUGIN_DIR'))
       define('WP_PLUGIN_DIR', WP_CONTENT_DIR.'/plugins');
 if (!defined('TAPFILIATE_PLUGIN_VERSION'))
-      define('TAPFILIATE_PLUGIN_VERSION', '3.0.0');
+      define('TAPFILIATE_PLUGIN_VERSION', '3.0.6');
 
 define('TAPFILIATE_PLUGIN_PATH', plugin_dir_path(__FILE__));
 include(TAPFILIATE_PLUGIN_PATH . 'helpers.php');
@@ -105,8 +105,8 @@ function tapfiliate_migrate_2_x_to_3_0()
     if ($page_title = get_option('thank_you_page')) {
         $page = get_page_by_title($page_title);
 
-        $optionQueryParamExternalId = get_option('query_parameter_external_id') ? " external_id_query_param=${get_option('query_parameter_external_id')}" : "";
-        $optionQueryParamConversionAmount = get_option('query_parameter_conversion_amount') ? " external_id_query_param=${get_option('query_parameter_conversion_amount')}" : "";
+        $optionQueryParamExternalId = ($query_parameter_external_id = get_option('query_parameter_external_id')) ? " external_id_query_param={$query_parameter_external_id}": '';
+        $optionQueryParamConversionAmount = ($query_parameter_conversion_amount = get_option('query_parameter_conversion_amount')) ? " external_id_query_param={$query_parameter_conversion_amount}" : '';
 
         $shortcode = trim(
             '<!-- wp:shortcode -->
@@ -142,7 +142,7 @@ function tapfiliate_migrate_2_x_to_3_0()
 function tapfiliate_version_check()
 {
     $persistedVersion = get_option('tap_plugin_version');
-    if (version_compare($persistedVersion, "3.0.0", "<")) {
+    if (version_compare($persistedVersion, '3.0.0', '<')) {
         tapfiliate_migrate_2_x_to_3_0();
     }
 
