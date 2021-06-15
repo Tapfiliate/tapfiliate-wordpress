@@ -5,7 +5,7 @@
  * Description: Easily integrate the Tapfiliate tracking code.
  * Author: Tapfiliate
  * Author URI: https://tapfiliate.com/
- * Version: 3.0.6
+ * Version: 3.0.7
  * Requires at least: 4.4
  * Tested up to: 5.4
  * WC requires at least: 2.6
@@ -29,13 +29,15 @@ if (!defined('WP_PLUGIN_URL'))
 if (!defined('WP_PLUGIN_DIR'))
       define('WP_PLUGIN_DIR', WP_CONTENT_DIR.'/plugins');
 if (!defined('TAPFILIATE_PLUGIN_VERSION'))
-      define('TAPFILIATE_PLUGIN_VERSION', '3.0.6');
+      define('TAPFILIATE_PLUGIN_VERSION', '3.0.7');
 
 define('TAPFILIATE_PLUGIN_PATH', plugin_dir_path(__FILE__));
 include(TAPFILIATE_PLUGIN_PATH . 'helpers.php');
 include(TAPFILIATE_PLUGIN_PATH . 'snippet/generate-inline-code.php');
+include(TAPFILIATE_PLUGIN_PATH . 'woocommerce/functions.php');
 include(TAPFILIATE_PLUGIN_PATH . 'woocommerce/admin.php');
 include(TAPFILIATE_PLUGIN_PATH . 'woocommerce/tracking-code.php');
+include(TAPFILIATE_PLUGIN_PATH . 'woocommerce/actions.php');
 include(TAPFILIATE_PLUGIN_PATH . 'wordpress/admin.php');
 include(TAPFILIATE_PLUGIN_PATH . 'wordpress/tracking-code.php');
 include(TAPFILIATE_PLUGIN_PATH . 'wp-easy-cart/tracking-code.php');

@@ -88,7 +88,7 @@ if (isset($_GET['woo_connected']) && !$_GET['woo_connected'] && !$woo_connected)
                     <td>
                         <input type="checkbox" id="tap_wc_use_woo_customer_id_for_lifetime" name="tap_wc_use_woo_customer_id_for_lifetime" <?php echo get_option('tap_wc_use_woo_customer_id_for_lifetime') ? 'checked' : null; ?>/>
                         <label for="tap_wc_use_woo_customer_id_for_lifetime">Enable Tapfiliate Lifetime and Recurring commissions for registered users <b>only</b>.</label>
-                        <p class="description">Recommended when only using WooCommerce Subscriptions. Whith this option enabled, we will use the WooCommerce customer id instead of the customer email for awarding lifetime / recurring commissions.</p>
+                        <p class="description">Recommended when only using WooCommerce Subscriptions. With this option enabled, we will use the WooCommerce customer id instead of the customer email for awarding lifetime / recurring commissions.</p>
                     </td>
                 </tr>
             <?php
