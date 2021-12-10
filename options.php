@@ -33,7 +33,7 @@ if (isset($_GET['woo_connected']) && !$_GET['woo_connected'] && !$woo_connected)
 
     <p>
         <a href="https://tapfiliate.com/free-trial/?utm_source=wordpress&utm_medium=webapp&utm_campaign=integration" target="_blank">
-            <img class="banner" src="<?php echo plugins_url( 'assets/images/banner.png', __FILE__ ); ?>">
+            <img class="banner" src="<?php echo plugins_url( 'images/banner.png', __FILE__ ); ?>">
         </a>
     </p>
 
@@ -50,7 +50,7 @@ if (isset($_GET['woo_connected']) && !$_GET['woo_connected'] && !$woo_connected)
                     <strong>Where can I find my account ID?</strong><br>
                     Log in to your <a href="https://tapfiliate.com/?utm_source=wordpress&utm_medium=webapp&utm_campaign=integration" target="_blank">Tapfiliate</a>
                     account, click on your profile image in the lower left corner and go to <em>Profile Settings</em>. There is a section Account Id with
-                    a number <a href="<?php echo plugins_url( 'assets/images/screenshot.png', __FILE__ ); ?>" target="_blank">(see screenshot)</a>. That’s the number you need to copy here.
+                    a number <a href="<?php echo plugins_url( 'images/screenshot.png', __FILE__ ); ?>" target="_blank">(see screenshot)</a>. That’s the number you need to copy here.
                 </p>
                 <!-- <p class="description">Your Tapfiliate account id can be found on your <a href="https://app.tapfiliate.com/user/edit/" target="_blank">profile page</a></p> -->
             </td>
